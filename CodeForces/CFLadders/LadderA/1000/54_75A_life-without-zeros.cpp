@@ -40,12 +40,7 @@ int main(){
     b = removeZeros(to_string(b));
     sum = removeZeros(to_string(sum));
  
-    int result;
- 
-    result = sum;
-    sum = a + b;
- 
-    if(result == sum)
+    if(a + b == sum)
         cout << "YES\n";
     else
         cout << "NO\n";
