@@ -18,7 +18,6 @@ int main(){
     cin.tie(0);
 
     set<char> vowels {'a', 'e', 'i', 'o', 'u', 'y'};
-
     string str;
 
     cin >> str;

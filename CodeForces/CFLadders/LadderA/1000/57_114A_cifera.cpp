@@ -22,24 +22,20 @@ int main(){
     cin >> k >> l;
 
     ll importance = 0;
-    bool flag = false;
 
     for(ll i = k; i < MAX; i *= k){
         if(i > l)
             break;
         else if(i == l){
-            flag = true;
+            cout << "YES\n" << importance << "\n";
             
-            break;
+            return 0;
         }
             
         importance++;
     }
 
-    if(flag)
-        cout << "YES\n" << importance << "\n";
-    else
-        cout << "NO\n";
+    cout << "NO\n";
  
     return 0;
 }
