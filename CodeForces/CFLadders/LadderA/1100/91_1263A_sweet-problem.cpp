@@ -29,12 +29,12 @@ int main(){
 
 		sort(candies.begin(), candies.end());
 
-		int rg = candies[0] + candies[1];
+		int rgminusb = candies[0] + candies[1];
 
-		if(candies[2] >= rg)
-			cout << rg << "\n";
+		if(candies[2] >= rgminusb)
+			cout << rgminusb << "\n";
 		else
-			cout << (candies[2] + rg) / 2 << "\n";
+			cout << (candies[2] + rgminusb) / 2 << "\n";
 	}
 
     return 0;
