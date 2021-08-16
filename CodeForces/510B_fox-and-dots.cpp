@@ -1,85 +1,75 @@
-//Luis Henrique Morelli
-//https://codeforces.com/contest/510/problem/B
-//03/09/2020
+/*
+    Luis Henrique Morelli
+    510B - Fox And Two Dots
+    https://codeforces.com/contest/510/problem/B
+*/
 
 #include <bits/stdc++.h>
-
+ 
 #define MAX 50
-
+ 
 using namespace std;
+ 
+typedef long int l;
+typedef long long int ll;
 
-vector<pair<int, int>> dir = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-char currColor;
-int N, M;
+pair<int, int> dir[4] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+int n, m;
 
-bool dfs(vector<string> g, int row, int col, int prevRow, int prevCol, int k, vector<vector<bool>> &visited){
-    if(row < 0 || row >= N || col < 0 || col >= M){
+bool dfs(string matrix[], int row, int col, int prevRow, int prevCol, char color, int count, bool visited[][MAX]){
+    if(row < 0 || row >= n || col < 0 || col >= m )
         return false;
-    }
-    else if(g[row][col] != currColor){
+    else if(matrix[row][col] != color)
         return false;
-    }
     else if(visited[row][col]){
-        if(k >= 4){
+        if(count >= 4)
             return true;
-        }
-
+        
         return false;
     }
-    
+
     visited[row][col] = true;
 
-    for(int i = 0; i < 4; i++){        
-        int nextRow, nextCol;
-        
-        nextRow = row + dir[i].first;
-        nextCol = col + dir[i].second;
-        
-        if(nextRow != prevRow || nextCol != prevCol){
-            if(dfs(g, nextRow, nextCol, row, col, k + 1, visited)){
-                return true;
-            }
-        }
+    for(int i = 0; i < 4; i++){
+        int nextRow = row + dir[i].first, nextCol = col + dir[i].second;
+
+        if((nextRow != prevRow || nextCol != prevCol) 
+            && dfs(matrix, nextRow, nextCol, row, col, color, count + 1, visited))
+            return true;
     }
 
     return false;
 }
 
 int main(){
-    ios::sync_with_stdio(0);
+    ios_base::sync_with_stdio(0);
     cin.tie(0);
-    
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    cout.tie(0);
 
-    cin >> N >> M;
+    cin >> n >> m;
 
-    vector<string> grid;
+    string matrix[MAX];
 
-    for(int i = 0; i < N; i++){
-        string aux;
+    for(int i = 0; i < n; i++)
+        cin >> matrix[i];
 
-        cin >> aux;
+    bool visited[MAX][MAX];
 
-        grid.push_back(aux);
-    }
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < m; j++)
+            visited[i][j] = false;
 
-    vector<vector<bool>> visited (MAX + 1, vector<bool> (MAX + 1, false));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            if(!visited[i][j] 
+                && dfs(matrix, i, j, -1, -1, matrix[i][j], 0, visited)){
+                cout <<"Yes\n";
 
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M; j++){
-            if(!visited[i][j]){
-                currColor = grid[i][j];
-                
-                if(dfs(grid, i, j, -1, -1, 0, visited)){
-                    cout << "Yes\n";
-
-                    return 0;
-                }
+                return 0;
             }
         }
     }
-
+            
     cout << "No\n";
 
     return 0;

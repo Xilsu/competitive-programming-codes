@@ -1,71 +1,49 @@
-//Luis Henrique Morelli
-//https://codeforces.com/problemset/problem/115/A
-//03/09/2020
-
+/*
+    Luis Henrique Morelli
+    115A - Party
+    https://codeforces.com/problemset/problem/115/A
+*/
+ 
 #include <bits/stdc++.h>
-
-#define MAX 2000
-
+ 
+#define MAX
+ 
 using namespace std;
-
-int dfs(vector<vector<int>> g, int node, int aux){
-    int size;
-
-    size = aux;
-
-    for(int i = 0; i < g[node].size(); i++){
-        int to;
-
-        to = g[node][i];
-        
-        size = max(size, dfs(g, to, aux + 1));
-    }
-
-    return size;
-}
+ 
+typedef long int l;
+typedef long long int ll;
 
 int main(){
-    ios::sync_with_stdio(0);
+    ios_base::sync_with_stdio(0);
     cin.tie(0);
+    cout.tie(0);
+
+    int n;
     
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    cin >> n;
 
-    int N;
+    int employees[n + 1];
 
-    cin >> N;
+    for(int i = 1; i <= n; i++)
+        cin >> employees[i];
 
-    vector<vector<int>> adjList (N + 1);
-    vector<int> sup;
+    int parties = 1;
 
-    for(int i = 1; i <= N; i++){
-        int a;
+    for(int i = 1; i <= n; i++){
+        if(employees[i] != -1){
+            int superior = employees[i], depth = 1;
 
-        cin >> a;
+            while(superior != -1){
+                superior = employees[superior];
 
-        if(a != -1){
-            adjList[a].push_back(i);
-        }
-        else{
-            sup.push_back(i);
+                depth++;
+            }
+
+            parties = max(depth, parties);
         }
     }
-
-    int groups;
-
-    groups = 0;
-
-    for(int i = 0; i < sup.size(); i++){
-        int aux;
-    
-        aux = dfs(adjList, sup[i], 1);
-
-        if(aux > groups){
-            groups = aux;
-        }
-    }
-
-    cout << groups << "\n";
+        
+    cout << parties << "\n";
 
     return 0;
 }
