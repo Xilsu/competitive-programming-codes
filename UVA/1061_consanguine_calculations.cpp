@@ -1,7 +1,7 @@
 /*
     Luis Henrique Morelli
-	1061 - Consanguine Calculations
-	https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3502
+    1061 - Consanguine Calculations
+    https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3502
 */
  
 #include <bits/stdc++.h>
