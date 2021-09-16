@@ -1,7 +1,7 @@
 /*
     Luis Henrique Morelli
-    KNAPSACK - The Knapsack Problem
-    https://www.spoj.com/problems/KNAPSACK/
+    LKS - Large Knapsack
+    https://www.spoj.com/problems/LKS/
 */
 
 #include <bits/stdc++.h>
@@ -21,19 +21,19 @@ int main(){
     cin.tie(0);
     cout.tie(0);
 
-    int s, n;
+    int k, n;
 
-    cin >> s >> n;
+    cin >> k >> n;
 
-    vector<int> dp (s + 1);
+    vector<int> dp (k + 1);
 
     for(int i = 1; i <= n; i++){
-        int w, p;
+        int v, w;
 
-        cin >> w >> p;
+        cin >> v >> w;
 
-        for(int j = s; j >= w; j--)
-            dp[j] = max(dp[j], dp[j - w] + p);
+        for(int j = k; j >= w; j--)
+            dp[j] = max(dp[j], dp[j - w] + v);
     }
 
     cout << *max_element(dp.begin(), dp.end()) << "\n";
