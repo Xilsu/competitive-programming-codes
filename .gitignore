@@ -1,10 +1,9 @@
+*.in
+*.out
 a
-a.out
 a.cpp
 a.exe
 main.cpp
-data.in
-data.out
 in.txt
 out.txt
 .vscode
