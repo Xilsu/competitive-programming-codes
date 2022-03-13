@@ -3,7 +3,11 @@
 a
 a.cpp
 a.exe
+x
+x.cpp
+x.exe
 main.cpp
 in.txt
 out.txt
 .vscode
+Makefile
