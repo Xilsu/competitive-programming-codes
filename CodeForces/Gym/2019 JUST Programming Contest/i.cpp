@@ -12,14 +12,14 @@ typedef vector<int> vi;
 typedef vector<ii> vii;
 typedef vector<iii> viii;
 
-int main(){
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+
     int t;
     cin >> t;
 
-    while(t--){
+    while (t--) {
         int n, k;
         cin >> n >> k;
 
@@ -27,21 +27,21 @@ int main(){
         ll sum = 0;
         priority_queue<int> pq;
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             int x;
             cin >> x;
             mi = min(mi, abs(x));
 
-            if(x > 0)
+            if (x > 0)
                 sum += x;
             else
                 pq.push(-x);
         }
 
-        while(!pq.empty()){
+        while (!pq.empty()) {
             int x;
-            
-            if(k){
+
+            if (k) {
                 x = pq.top();
                 k--;
             } else {

@@ -2,6 +2,7 @@
 
 #define MAX
 #define MOD
+#define INF
 
 using namespace std;
 
@@ -16,22 +17,9 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
-
-    while (t--) {
-        string str;
-        cin >> str;
-
-        int words = 1;
-
-        for (int i = 1; i < int(str.size()); i++) {
-            if (str[i] >= 'A' && str[i] <= 'Z')
-                words++;
-        }
-
-        cout << (words <= 7 ? "YES\n" : "NO\n");
-    }
+    int h, p;
+    cin >> h >> p;
+    cout << fixed << setprecision(2) << (double)h / p << "\n";
 
     return 0;
 }

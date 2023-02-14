@@ -12,25 +12,25 @@ typedef vector<int> vi;
 typedef vector<ii> vii;
 typedef vector<iii> viii;
 
-int main(){
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+
     int t;
     cin >> t;
 
-    while(t--){
+    while (t--) {
         string str;
         cin >> str;
 
         char c = str[0];
         bool f = true;
 
-        for(int i = 0; i < int(str.size()) && f; i++, c++){
-            if(c > 'z')
+        for (int i = 0; i < int(str.size()) && f; i++, c++) {
+            if (c > 'z')
                 c = 'a';
 
-            if(str[i] != c)
+            if (str[i] != c)
                 f = false;
         }
 

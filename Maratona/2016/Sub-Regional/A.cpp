@@ -2,6 +2,7 @@
 
 #define MAX
 #define MOD
+#define INF
 
 using namespace std;
 
@@ -16,22 +17,16 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+    int a, b, c, sum1, sum2, sum3;
+    cin >> a >> b >> c;
+    sum1 = a + b;
+    sum2 = a + c;
+    sum3 = b + c;
 
-    while (t--) {
-        string str;
-        cin >> str;
-
-        int words = 1;
-
-        for (int i = 1; i < int(str.size()); i++) {
-            if (str[i] >= 'A' && str[i] <= 'Z')
-                words++;
-        }
-
-        cout << (words <= 7 ? "YES\n" : "NO\n");
-    }
+    if (a != b && b != c && a != c && a != sum3 && b != sum2 && c != sum1)
+        cout << "N\n";
+    else
+        cout << "S\n";
 
     return 0;
 }
